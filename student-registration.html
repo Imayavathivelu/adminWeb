@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        /* Reset some default browser styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f4e1d2, #f4c7a5);
+            /* Light peach to light gold */
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Container for the registration page */
+        .registration-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: whitesmoke;
+            border-radius: 10px;
+            padding: 30px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Input and select fields */
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input,
+        select,
+        textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        /* Button */
+        button {
+            padding: 12px 20px;
+            background-color: #f4c7a5;
+            /* Gold color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e1a96d;
+            /* Darker gold on hover */
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+
+        /* Additional Styling for Specific Sections */
+        h3 {
+            margin-top: 30px;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Styling for Subjects and Region */
+        select {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        textarea {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        /* Extra Spacing */
+        button {
+            margin-top: 20px;
+        }
+    </style>
+
+    <!-- Registration Page Container -->
+    <div class="registration-page">
+        <div class="container">
+            <h2>Student Registration</h2>
+            <form action="" method="POST">
+
+                <!-- Student Personal Information -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="grade">Grade (11 or 12):</label>
+                <select id="grade" name="grade" required>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+
+                <!-- Department & Medium -->
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" required>
+
+                <label for="medium">Medium of Instruction:</label>
+                <select id="medium" name="medium" required>
+                    <option value="tamil">Tamil</option>
+                    <option value="english">English</option>
+                </select>
+
+                <label for="school">School Name:</label>
+                <input type="text" id="school" name="school" required>
+
+                <label for="region">Region (District):</label>
+                <select id="region" name="region" required>
+                    <option value="chennai">Chennai</option>
+                    <option value="madurai">Madurai</option>
+                    <option value="coimbatore">Coimbatore</option>
+                    <option value="trichy">Trichy</option>
+                    <!-- Add more districts as needed -->
+                </select>
+
+                <!-- Preferred Subjects -->
+                <label for="subjects">Preferred Subjects:</label>
+                <select id="subjects" name="subjects[]" multiple required>
+                    <option value="physics">Physics</option>
+                    <option value="maths">Maths</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="english">English</option>
+                    <option value="accounts">Accounts</option>
+                    <option value="commerce">Commerce</option>
+                </select>
+
+                <!-- Parent Details -->
+                <h3>Parent Information</h3>
+
+                <label for="parentName">Parent's Name:</label>
+                <input type="text" id="parentName" name="parentName" required>
+
+                <label for="parentOccupation">Parent's Occupation:</label>
+                <input type="text" id="parentOccupation" name="parentOccupation" required>
+
+                <label for="parentPhone">Parent's Phone Number:</label>
+                <input type="text" id="parentPhone" name="parentPhone" required>
+
+                <label for="parentAddress">Parent's Address:</label>
+                <textarea id="parentAddress" name="parentAddress" required></textarea>
+
+                <!-- Submit Button -->
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

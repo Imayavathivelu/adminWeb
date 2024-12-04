@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, #FFD700, #FFFACD);
+            /* Gold gradient */
+        }
+
+        /* Register Page Container */
+        .container {
+            background-color: #F5F5F5;
+            /* Whitesmoke */
+            padding: 40px 30px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: #008080;
+            /* Teal */
+            color: #FFFFFF;
+            padding: 10px 15px;
+            width: 45%;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: rgb(0, 105, 128);
+            /* Gold on hover */
+            transform: scale(1.05);
+        }
+    </style>
+    <div class="register-page">
+        <div class="container">
+            <h2>Register</h2>
+            <p>Choose your registration type:</p>
+            <div class="btn-group">
+                <button class="btn tutor-btn" onclick="navigateTo('tutor-registration.html')">Tutor
+                    Registration</button>
+                <button class="btn student-btn" onclick="navigateTo('student-registration.html')">Student
+                    Registration</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+
+</html>

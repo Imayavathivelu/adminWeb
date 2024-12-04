@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        /* Reset some default browser styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #FFD700, #FFFACD);
+            /* Light peach to light gold */
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Container for the registration page */
+        .registration-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200vh;
+        }
+
+        .container {
+            background-color: whitesmoke;
+            border-radius: 10px;
+            padding: 30px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Input and select fields */
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input,
+        select,
+        textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        /* Button */
+        button {
+            padding: 12px 20px;
+            background-color: #f4c7a5;
+            /* Gold color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e1a96d;
+            /* Darker gold on hover */
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+
+        /* Additional Styling for Specific Sections */
+        #studentFields,
+        #employeeFields {
+            margin-top: 20px;
+        }
+
+        #studentFields label,
+        #employeeFields label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #specializationLabel {
+            font-weight: bold;
+        }
+
+        select,
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        /* Bank Details Section */
+        h3 {
+            margin-top: 30px;
+            color: #333;
+            font-size: 18px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea {
+            font-size: 14px;
+        }
+
+        /* Fields for Academic Year and Domain */
+        #domain,
+        #specialization {
+            width: 100%;
+        }
+
+        #domain,
+        #specialization,
+        #startYear,
+        #academicYear,
+        #department {
+            margin-top: 15px;
+        }
+
+        /* Styling for Address Textarea */
+        textarea {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        /* Add extra spacing */
+        button {
+            margin-top: 20px;
+        }
+    </style>
+    <div class="registration-page">
+        <div class="container">
+            <h2>Tutor Registration</h2>
+            <form id="tutorRegistrationForm">
+                <!-- Tutor Details -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+
+                <!-- Occupation -->
+                <label for="occupation">Occupation:</label>
+                <select id="occupation" name="occupation" onchange="handleOccupationChange()" required>
+                    <option value="">Select Occupation</option>
+                    <option value="student">Student</option>
+                    <option value="employee">Employee</option>
+                </select>
+
+                <!-- Student Fields -->
+                <div id="studentFields" style="display: none;">
+                    <label for="yearOfStudy">Year of Study:</label>
+                    <select id="yearOfStudy" name="yearOfStudy" required>
+                        <option value="">Select Year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+
+                    <label for="domain">Domain:</label>
+                    <select id="domain" name="domain" onchange="handleDomainChange()" required>
+                        <option value="">Select Domain</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="arts">Arts & Science</option>
+                    </select>
+
+                    <!-- Dynamic Options for Domain -->
+                    <label for="specialization" id="specializationLabel" style="display: none;">Specialization:</label>
+                    <select id="specialization" name="specialization" style="display: none;" required></select>
+
+                    <label for="college">College Name:</label>
+                    <input type="text" id="college" name="college" required>
+
+                    <label for="startYear">Start Year:</label>
+                    <select id="startYear" name="startYear" onchange="calculatePassoutYear()" required>
+                        <option value="">Select Start Year</option>
+                    </select>
+
+                    <label for="passoutYear">Passout Year:</label>
+                    <input type="text" id="passoutYear" name="passoutYear" readonly>
+                </div>
+
+                <!-- Employee Fields -->
+                <div id="employeeFields" style="display: none;">
+                    <label for="role">Role:</label>
+                    <input type="text" id="role" name="role" required>
+
+                    <label for="organization">Organization Name:</label>
+                    <input type="text" id="organization" name="organization" required>
+
+                    <label for="education">Education:</label>
+                    <input type="text" id="education" name="education" required>
+
+                    <label for="collegeEmployee">College Name:</label>
+                    <input type="text" id="collegeEmployee" name="collegeEmployee" required>
+                </div>
+
+                <!-- Common Fields for Tutors -->
+                <label for="academicYear">Academic Year:</label>
+                <select id="academicYear" name="academicYear" required>
+                    <option value="">Select Academic Year</option>
+                    <option value="1">First Year</option>
+                    <option value="2">Second Year</option>
+                    <option value="3">Third Year</option>
+                    <option value="4">Fourth Year</option>
+                </select>
+
+                <label for="department">Department:</label>
+                <select id="department" name="department" required>
+                    <option value="">Select Department</option>
+                    <option value="computerScience">Computer Science</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="civil">Civil</option>
+                    <option value="biomedical">Biomedical</option>
+                </select>
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea>
+
+                <h3>Bank Details</h3>
+                <label for="accountNumber">Account Number:</label>
+                <input type="text" id="accountNumber" name="accountNumber" required>
+
+                <label for="ifsc">IFSC Code:</label>
+                <input type="text" id="ifsc" name="ifsc" required>
+
+                <label for="branch">Branch Name:</label>
+                <input type="text" id="branch" name="branch" required>
+
+                <label for="bankName">Bank Name:</label>
+                <input type="text" id="bankName" name="bankName" required>
+
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Dynamically Populate Start Year
+        const currentYear = new Date().getFullYear();
+        const startYearSelect = document.getElementById('startYear');
+        for (let year = 2015; year <= currentYear; year++) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            startYearSelect.appendChild(option);
+        }
+
+        function handleOccupationChange() {
+            const occupation = document.getElementById('occupation').value;
+            document.getElementById('studentFields').style.display = occupation === 'student' ? 'block' : 'none';
+            document.getElementById('employeeFields').style.display = occupation === 'employee' ? 'block' : 'none';
+        }
+
+        function handleDomainChange() {
+            const domain = document.getElementById('domain').value;
+            const specializationSelect = document.getElementById('specialization');
+            specializationSelect.style.display = 'block';
+            document.getElementById('specializationLabel').style.display = 'block';
+            specializationSelect.innerHTML = ''; // Clear existing options
+
+            const options =
+                domain === 'engineering'
+                    ? [
+                        'Civil',
+                        'Mechanical',
+                        'Computer Science',
+                        'Electrical & Electronics',
+                        'Electronics & Communication',
+                        'Information Technology',
+                        'Artificial Intelligence and Machine Learning',
+                        'Mechatronics',
+                    ]
+                    : [
+                        'B. Com',
+                        'B. Com (General)',
+                        'B. Com (Accounting & Finance)',
+                        'B. Sc (Maths)',
+                        'B. Sc (Physics)',
+                        'B. A (English Lit)',
+                        'B. A (Economics)',
+                    ];
+
+            options.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                specializationSelect.appendChild(opt);
+            });
+        }
+
+        function calculatePassoutYear() {
+            const startYear = parseInt(document.getElementById('startYear').value);
+            const domain = document.getElementById('domain').value;
+            const passoutYear = startYear + (domain === 'engineering' ? 4 : 3);
+            document.getElementById('passoutYear').value = passoutYear;
+        }
+    </script>
+</body>
+
+</html>
